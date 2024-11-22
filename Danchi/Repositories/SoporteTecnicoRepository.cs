@@ -28,6 +28,11 @@ namespace Danchi.Repositories
             var data = await context.soporteTecnico.Where(x => x.IdResidente == id).FirstOrDefaultAsync();
             return data;
         }
+        public async Task<SoporteTecnico> GetSoporteTecnicoByName(string ActividadAfectada)
+        {
+            var data = await context.soporteTecnico.Where(x => x.ActividadAfectada == ActividadAfectada).FirstOrDefaultAsync();
+            return data;
+        }
 
         public async Task<bool> PostSoporteTecnico(SoporteTecnico soporteTecnico)
         {

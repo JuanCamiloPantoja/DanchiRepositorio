@@ -28,6 +28,11 @@ namespace Danchi.Repositories
             var data = await context.sugerenciasReporteErrores.Where(x => x.IdResidente == id).FirstOrDefaultAsync();
             return data;
         }
+        public async Task<SugerenciasReporteErrores> GetSugerenciasReporteErroresByName(string TipoDeReporte)
+        {
+            var data = await context.sugerenciasReporteErrores.Where(x => x.TipoDeReporte == TipoDeReporte).FirstOrDefaultAsync();
+            return data;
+        }
 
         public async Task<bool> PostSugerenciasReporteErrores(SugerenciasReporteErrores sugerenciasReporteErrores)
         {

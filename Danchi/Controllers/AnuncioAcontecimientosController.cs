@@ -1,0 +1,48 @@
+﻿using Danchi.Models;
+using Danchi.Repositories.Interfaces;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Danchi.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class AnuncioAcontecimientosController : ControllerBase
+    {
+        private readonly IAnuncioAcontecimientosRepository _repository;
+
+        public AnuncioAcontecimientosController(IAnuncioAcontecimientosRepository repository)
+        {
+            _repository = repository;
+        }
+
+        [HttpGet("GetAnuncioAcontecimientosr")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> GetAnuncioAcontecimientos()
+        {
+            var response = await _repository.GetAnuncioAcontecimientos();
+            return Ok(response);
+        }
+
+        [HttpPost("PostAnuncioAcontecimientos")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> PostAnuncioAcontecimientos([FromBody] AnuncioAcontecimientos anuncioAcontecimientos)
+        {
+            try
+            {
+                var response = await _repository.PostAnuncioAcontecimientos(anuncioAcontecimientos);
+                if (response == true)
+                    return Ok("Insertado correctamente");
+                else
+                    return BadRequest(response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+    }
+}

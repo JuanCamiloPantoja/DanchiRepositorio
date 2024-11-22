@@ -7,6 +7,8 @@ namespace Danchi.Repositories.Interfaces
 
         Task<SoporteTecnico> GetSoporteTecnicoById(int id);
 
+        Task<SoporteTecnico> GetSoporteTecnicoByName(string ActividadAfectada);
+
         Task<bool> PostSoporteTecnico(SoporteTecnico soporteTecnico);
 
         Task<bool> PutSoporteTecnico(SoporteTecnico soporteTecnico);

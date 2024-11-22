@@ -7,6 +7,8 @@ namespace Danchi.Repositories.Interfaces
 
         Task<SugerenciasReporteErrores> GetSugerenciasReporteErroresById(int id);
 
+        Task<SugerenciasReporteErrores> GetSugerenciasReporteErroresByName(string TipoDeReporte);
+
         Task<bool> PostSugerenciasReporteErrores(SugerenciasReporteErrores sugerenciasReporteErrores);
 
         Task<bool> PutSugerenciasReporteErrores(SugerenciasReporteErrores sugerenciasReporteErrores);
