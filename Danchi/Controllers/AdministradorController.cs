@@ -2,6 +2,7 @@
 using Danchi.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Danchi.Controllers
 {
@@ -44,5 +45,52 @@ namespace Danchi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpPut("PutAdministrador/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> PutAdministrador(int id, [FromBody] Administrador administrador)
+        {
+            if (id != administrador.IdAdministrador)
+            {
+                return BadRequest("El ID del administrador no coincide con el proporcionado.");
+            }
+
+            try
+            {
+                var response = await _repository.PutAdministrador(administrador);
+                if (response)
+                    return Ok("Administrador actualizado correctamente.");
+                else
+                    return NotFound("Administrador no encontrado.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("DeleteAdministrador/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> DeleteAdministrador(int Id)
+        {
+            try
+            {
+                // Asegúrate de que 'id' corresponde a 'IdAdministrador'
+                var response = await _repository.DeleteAdministrador(Id);
+                if (response)
+                    return Ok("Administrador eliminado correctamente.");
+                else
+                    return NotFound("Administrador no encontrado.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
     }
 }
+
