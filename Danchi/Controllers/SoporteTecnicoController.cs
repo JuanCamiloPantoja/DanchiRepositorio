@@ -44,5 +44,46 @@ namespace Danchi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPut("PutSoporteTecnico")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> PutSoporteTecnico([FromBody] SoporteTecnico soporteTecnico)
+        {
+            try
+            {
+                var response = await _repository.PutSoporteTecnico(soporteTecnico);
+                if (response)
+                    return Ok("Actualizado correctamente");
+                else
+                    return NotFound("Soporte técnico no encontrado");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("DeleteSoporteTecnico/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> DeleteSoporteTecnico(int id)
+        {
+            try
+            {
+                var response = await _repository.DeleteSoporteTecnico(id);
+                if (response)
+                    return Ok("Eliminado correctamente");
+                else
+                    return NotFound("Soporte técnico no encontrado");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }

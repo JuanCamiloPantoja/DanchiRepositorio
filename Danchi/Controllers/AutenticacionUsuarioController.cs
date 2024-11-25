@@ -44,5 +44,46 @@ namespace Danchi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPut("PutAutenticacionUsuario")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> PutAutenticacionUsuario([FromBody] AutenticacionUsuario autenticacionUsuario)
+        {
+            try
+            {
+                var response = await _repository.PutAutenticacionUsuario(autenticacionUsuario);
+                if (response)
+                    return Ok("Actualizado correctamente");
+                else
+                    return NotFound("Usuario no encontrado");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("DeleteAutenticacionUsuario/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> DeleteAutenticacionUsuario(int id)
+        {
+            try
+            {
+                var response = await _repository.DeleteAutenticacionUsuario(id);
+                if (response)
+                    return Ok("Eliminado correctamente");
+                else
+                    return NotFound("Usuario no encontrado");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }

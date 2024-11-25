@@ -73,7 +73,7 @@ namespace Danchi.Controllers
         [HttpDelete("DeleteAdministrador/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DeleteAdministrador(int Id)
+        public async Task<IActionResult> DeleteAdministrador(int Id )
         {
             try
             {

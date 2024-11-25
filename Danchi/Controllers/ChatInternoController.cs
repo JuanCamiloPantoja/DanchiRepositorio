@@ -44,5 +44,46 @@ namespace Danchi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPut("PutChatInterno")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> PutChatInterno([FromBody] ChatInterno chatInterno)
+        {
+            try
+            {
+                var response = await _repository.PutChatInterno(chatInterno);
+                if (response)
+                    return Ok("Actualizado correctamente");
+                else
+                    return NotFound("Chat no encontrado");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("DeleteChatInterno/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> DeleteChatInterno(int id)
+        {
+            try
+            {
+                var response = await _repository.DeleteChatInterno(id);
+                if (response)
+                    return Ok("Eliminado correctamente");
+                else
+                    return NotFound("Chat no encontrado");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }

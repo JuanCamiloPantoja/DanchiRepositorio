@@ -44,5 +44,46 @@ namespace Danchi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPut("PutSugerenciasReporteErrores")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> PutSugerenciasReporteErrores([FromBody] SugerenciasReporteErrores sugerenciasReporteErrores)
+        {
+            try
+            {
+                var response = await _repository.PutSugerenciasReporteErrores(sugerenciasReporteErrores);
+                if (response)
+                    return Ok("Actualizado correctamente");
+                else
+                    return NotFound("Sugerencia de reporte de errores no encontrada");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("DeleteSugerenciasReporteErrores/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> DeleteSugerenciasReporteErrores(int id)
+        {
+            try
+            {
+                var response = await _repository.DeleteSugerenciasReporteErrores(id);
+                if (response)
+                    return Ok("Eliminado correctamente");
+                else
+                    return NotFound("Sugerencia de reporte de errores no encontrada");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }

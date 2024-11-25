@@ -44,5 +44,46 @@ namespace Danchi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPut("PutAnuncioAcontecimientos")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> PutAnuncioAcontecimientos([FromBody] AnuncioAcontecimientos anuncioAcontecimientos)
+        {
+            try
+            {
+                var response = await _repository.PutAnuncioAcontecimientos(anuncioAcontecimientos);
+                if (response)
+                    return Ok("Actualizado correctamente");
+                else
+                    return NotFound("Anuncio o acontecimiento no encontrado");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("DeleteAnuncioAcontecimientos/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> DeleteAnuncioAcontecimientos(int id)
+        {
+            try
+            {
+                var response = await _repository.DeleteAnuncioAcontecimientos(id);
+                if (response)
+                    return Ok("Eliminado correctamente");
+                else
+                    return NotFound("Anuncio o acontecimiento no encontrado");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }

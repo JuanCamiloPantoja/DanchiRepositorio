@@ -44,5 +44,46 @@ namespace Danchi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPut("PutResidente")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> PutResidente([FromBody] Residente residente)
+        {
+            try
+            {
+                var response = await _repository.PutResidente(residente);
+                if (response)
+                    return Ok("Actualizado correctamente");
+                else
+                    return NotFound("Residente no encontrado");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("DeleteResidente/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> DeleteResidente(int id)
+        {
+            try
+            {
+                var response = await _repository.DeleteResidente(id);
+                if (response)
+                    return Ok("Eliminado correctamente");
+                else
+                    return NotFound("Residente no encontrado");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }

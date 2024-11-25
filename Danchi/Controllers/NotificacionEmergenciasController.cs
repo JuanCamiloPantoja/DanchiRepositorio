@@ -44,5 +44,46 @@ namespace Danchi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPut("PutNotificacionEmergencias")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> PutNotificacionEmergencias([FromBody] NotificacionEmergencias notificacionEmergencias)
+        {
+            try
+            {
+                var response = await _repository.PutNotificacionEmergencias(notificacionEmergencias);
+                if (response)
+                    return Ok("Actualizado correctamente");
+                else
+                    return NotFound("Notificación de emergencia no encontrada");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("DeleteNotificacionEmergencias/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> DeleteNotificacionEmergencias(int id)
+        {
+            try
+            {
+                var response = await _repository.DeleteNotificacionEmergencias(id);
+                if (response)
+                    return Ok("Eliminado correctamente");
+                else
+                    return NotFound("Notificación de emergencia no encontrada");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }
