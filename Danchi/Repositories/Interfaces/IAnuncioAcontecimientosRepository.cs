@@ -14,6 +14,6 @@ namespace Danchi.Repositories.Interfaces
 
         Task<bool> PutAnuncioAcontecimientos(AnuncioAcontecimientos anuncioAcontecimientos);
 
-        Task<bool> DeleteAnuncioAcontecimientos(AnuncioAcontecimientos anuncioAcontecimientos);
+        Task<bool> DeleteAnuncioAcontecimientos(int id);
     }
 }

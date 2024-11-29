@@ -14,6 +14,6 @@ namespace Danchi.Repositories.Interfaces
 
         Task<bool> PutAdministrador(Administrador Administrador);
 
-        Task<bool> DeleteAdministrador(Administrador administrador);
+        Task<bool> DeleteAdministrador(int id);
     }
 }

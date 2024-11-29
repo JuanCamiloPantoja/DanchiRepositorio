@@ -49,11 +49,18 @@ namespace Danchi.Repositories
             return true;
         }
 
-        public async Task<bool> DeleteAdministrador(Administrador administrador)
+        public async Task<bool> DeleteAdministrador(int id)
         {
+            var administrador = await context.administrador.FindAsync(id);
+            if (administrador == null)
+            {
+                return false; 
+            }
+
             context.administrador.Remove(administrador);
-            await context.SaveAsync();
+            await context.SaveChangesAsync();
             return true;
         }
+
     }
 }

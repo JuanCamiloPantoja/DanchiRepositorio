@@ -77,7 +77,6 @@ namespace Danchi.Controllers
         {
             try
             {
-                // Asegúrate de que 'id' corresponde a 'IdAdministrador'
                 var response = await _repository.DeleteAdministrador(Id);
                 if (response)
                     return Ok("Administrador eliminado correctamente.");
