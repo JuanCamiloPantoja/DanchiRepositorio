@@ -12,6 +12,6 @@ namespace Danchi.Repositories.Interfaces
 
         Task<bool> PutAutenticacionUsuario(AutenticacionUsuario autenticacionUsuario);
 
-        Task<bool> DeleteAnuncioAcontecimientos(int id);
+        Task<bool> DeleteAutenticacionUsuario(int id);
     }
 }

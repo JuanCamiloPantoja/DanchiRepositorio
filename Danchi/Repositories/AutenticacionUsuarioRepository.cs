@@ -43,15 +43,15 @@ namespace Danchi.Repositories
             return true;
         }
 
-        public async Task<bool> DeleteAnuncioAcontecimientos(int id)
+        public async Task<bool> DeleteAutenticacionUsuario(int id)
         {
-            var anuncioAcontecimientos = await context.anuncioAcontecimientos.FindAsync(id);
+            var autenticacionUsuario = await context.autenticacionUsuario.FindAsync(id);
 
-            if (anuncioAcontecimientos == null)
+            if (autenticacionUsuario == null)
             {
                 return false;
             }
-            context.anuncioAcontecimientos.Remove(anuncioAcontecimientos);
+            context.autenticacionUsuario.Remove(autenticacionUsuario);
             await context.SaveChangesAsync();
             return true;
         }
