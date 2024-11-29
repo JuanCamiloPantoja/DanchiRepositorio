@@ -48,11 +48,19 @@ namespace Danchi.Repositories
             return true;
         }
 
-        public async Task<bool> DeleteSoporteTecnico(SoporteTecnico soporteTecnico)
+        public async Task<bool> DeleteSoporteTecnico(int id)
         {
+            var soporteTecnico = await context.soporteTecnico.FindAsync(id);
+
+            if (soporteTecnico == null)
+            {
+                return false;
+            }
+
             context.soporteTecnico.Remove(soporteTecnico);
-            await context.SaveAsync();
+            await context.SaveChangesAsync();
             return true;
         }
+
     }
 }

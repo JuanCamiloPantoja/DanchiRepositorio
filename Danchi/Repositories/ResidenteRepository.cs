@@ -49,11 +49,19 @@ namespace Danchi.Repositories
             return true;
         }
 
-        public async Task<bool> DeleteResidente(Residente residente)
+        public async Task<bool> DeleteResidente(int id)
         {
+            var residente = await context.residente.FindAsync(id);
+
+            if (residente == null)
+            {
+                return false;
+            }
+
             context.residente.Remove(residente);
-            await context.SaveAsync();
+            await context.SaveChangesAsync();
             return true;
         }
+
     }
 }

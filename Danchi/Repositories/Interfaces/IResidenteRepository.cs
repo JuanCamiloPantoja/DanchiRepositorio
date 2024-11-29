@@ -13,6 +13,6 @@ namespace Danchi.Repositories.Interfaces
 
         Task<bool> PutResidente(Residente Residente);
 
-        Task<bool> DeleteResidente(Residente Residente);
+        Task<bool> DeleteResidente(int id);
     }
 }

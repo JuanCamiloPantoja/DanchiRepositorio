@@ -54,11 +54,19 @@ namespace Danchi.Repositories
             return true;
         }
 
-        public async Task<bool> DeleteChatInterno(ChatInterno chatInterno)
+        public async Task<bool> DeleteChatInterno(int id)
         {
+            var chatInterno = await context.chatInterno.FindAsync(id);
+
+            if (chatInterno == null)
+            {
+                return false;
+            }
+
             context.chatInterno.Remove(chatInterno);
-            await context.SaveAsync();
+            await context.SaveChangesAsync();
             return true;
         }
+
     }
 }

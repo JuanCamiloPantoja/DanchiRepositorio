@@ -13,6 +13,6 @@ namespace Danchi.Repositories.Interfaces
 
         Task<bool> PutSoporteTecnico(SoporteTecnico soporteTecnico);
 
-        Task<bool> DeleteSoporteTecnico(SoporteTecnico soporteTecnico);
+        Task<bool> DeleteSoporteTecnico(int id);
     }
 }

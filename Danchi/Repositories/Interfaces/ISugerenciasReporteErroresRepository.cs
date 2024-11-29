@@ -13,6 +13,6 @@ namespace Danchi.Repositories.Interfaces
 
         Task<bool> PutSugerenciasReporteErrores(SugerenciasReporteErrores sugerenciasReporteErrores);
 
-        Task<bool> DeleteSugerenciasReporteErrores(SugerenciasReporteErrores sugerenciasReporteErrores);
+        Task<bool> DeleteSugerenciasReporteErrores(int id);
     }
 }

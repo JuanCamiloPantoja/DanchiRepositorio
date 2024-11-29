@@ -49,11 +49,19 @@ namespace Danchi.Repositories
             return true;
         }
 
-        public async Task<bool> DeleteNotificacionEmergencias(NotificacionEmergencias notificacionEmergencias)
+        public async Task<bool> DeleteNotificacionEmergencias(int id)
         {
+            var notificacionEmergencias = await context.notificacionEmergencias.FindAsync(id);
+
+            if (notificacionEmergencias == null)
+            {
+                return false;
+            }
+
             context.notificacionEmergencias.Remove(notificacionEmergencias);
-            await context.SaveAsync();
+            await context.SaveChangesAsync();
             return true;
         }
+
     }
 }

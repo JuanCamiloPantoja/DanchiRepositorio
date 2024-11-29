@@ -15,6 +15,6 @@ namespace Danchi.Repositories.Interfaces
 
         Task<bool> PutChatInterno(ChatInterno chatInterno);
 
-        Task<bool> DeleteChatInterno(ChatInterno chatInterno);
+        Task<bool> DeleteChatInterno(int id);
     }
 }

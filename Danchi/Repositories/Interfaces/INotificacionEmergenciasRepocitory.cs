@@ -13,6 +13,6 @@ namespace Danchi.Repositories.Interfaces
 
         Task<bool> PutNotificacionEmergencias(NotificacionEmergencias notificacionEmergencias);
 
-        Task<bool> DeleteNotificacionEmergencias(NotificacionEmergencias notificacionEmergencias);
+        Task<bool> DeleteNotificacionEmergencias(int id);
     }
 }

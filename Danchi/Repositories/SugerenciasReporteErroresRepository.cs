@@ -48,11 +48,19 @@ namespace Danchi.Repositories
             return true;
         }
 
-        public async Task<bool> DeleteSugerenciasReporteErrores(SugerenciasReporteErrores sugerenciasReporteErrores)
+        public async Task<bool> DeleteSugerenciasReporteErrores(int id)
         {
-            context.sugerenciasReporteErrores.Remove(sugerenciasReporteErrores);
-            await context.SaveAsync();
+            var sugerenciaReporteErrores = await context.sugerenciasReporteErrores.FindAsync(id);
+
+            if (sugerenciaReporteErrores == null)
+            {
+                return false;
+            }
+
+            context.sugerenciasReporteErrores.Remove(sugerenciaReporteErrores);
+            await context.SaveChangesAsync();
             return true;
         }
+
     }
 }
