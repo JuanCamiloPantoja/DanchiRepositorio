@@ -16,7 +16,7 @@ CorreoElctronicoAd nvarchar(100)
 Create table AutenticacionUsuario(
 TipoUsuario nvarchar(50),
 Usuario nvarchar(50),
-Contraseña nvarchar(50));
+ContraseÃ±a nvarchar(50));
 
 create table ChatInterno(
 IdChat int primary key,
@@ -36,14 +36,6 @@ Tipo_De_Reporte nvarchar (50),
 Descripcion nvarchar(200),
 Lugar nvarchar(100),
 FechaYHora datetime
-);
-
-Create table InversionFondos(
-IdInversion int primary key,
-PlazoInversión nvarchar(100),
-PrioridadImportancia nvarchar(100),
-EstadoInversion nvarchar(50),
-ObjetivosInversion nvarchar(100)
 );
 
 Create Table NotificacionEmergencia(
@@ -84,7 +76,7 @@ VALUES
     (1, 'Pedro Martinez', 3102345678, 'pedro.martinez@admin.com'),
     (2, 'Ana Rodriguez', 3118765432, 'ana.rodriguez@admin.com');
 
-INSERT INTO AutenticacionUsuario (TipoUsuario, Usuario, Contraseña)
+INSERT INTO AutenticacionUsuario (TipoUsuario, Usuario, ContraseÃ±a)
 VALUES
     ('Residente', 'juanp', 'password123'),
     ('Administrador', 'pedrom', 'adminpass'),
@@ -92,37 +84,37 @@ VALUES
 
 INSERT INTO ChatInterno (IdChat, IdAdministrador, IdResidente, Mensaje, Fecha, Hora, EstadoDelMensaje, Asunto, Adjuntos)
 VALUES
-    (1, 1, 1, 'Hola Juan, ¿cómo puedo ayudarte hoy?', '2024-08-01', '10:30:00', 'Enviado', 'Asistencia general', NULL),
-    (2, 2, 2, 'Hola María, ¿tienes algún problema con el servicio?', '2024-08-01', '11:00:00', 'Enviado', 'Consulta sobre servicios', NULL),
-    (3, 1, 3, 'Carlos, estamos revisando tu solicitud de soporte técnico.', '2024-08-02', '14:45:00', 'Enviado', 'Soporte técnico', NULL);
+    (1, 1, 1, 'Hola Juan, Â¿cÃ³mo puedo ayudarte hoy?', '2024-08-01', '10:30:00', 'Enviado', 'Asistencia general', NULL),
+    (2, 2, 2, 'Hola MarÃ­a, Â¿tienes algÃºn problema con el servicio?', '2024-08-01', '11:00:00', 'Enviado', 'Consulta sobre servicios', NULL),
+    (3, 1, 3, 'Carlos, estamos revisando tu solicitud de soporte tÃ©cnico.', '2024-08-02', '14:45:00', 'Enviado', 'Soporte tÃ©cnico', NULL);
 
 INSERT INTO SugerenciasReporteErrores (IdSugerenciaError, IdResidente, Tipo_De_Reporte, Descripcion, Lugar, FechaYHora)
 VALUES
-    (1, 1, 'Sugerencia', 'Me gustaría sugerir una nueva función.', 'Plataforma web', '2024-08-03 12:30:00'),
-    (2, 2, 'Error', 'Hay un problema al cargar la página.', 'Plataforma web', '2024-08-04 09:15:00'),
-    (3, 3, 'Sugerencia', 'Sería útil tener una aplicación móvil.', 'Plataforma móvil', '2024-08-05 16:20:00');
+    (1, 1, 'Sugerencia', 'Me gustarÃ­a sugerir una nueva funciÃ³n.', 'Plataforma web', '2024-08-03 12:30:00'),
+    (2, 2, 'Error', 'Hay un problema al cargar la pÃ¡gina.', 'Plataforma web', '2024-08-04 09:15:00'),
+    (3, 3, 'Sugerencia', 'SerÃ­a Ãºtil tener una aplicaciÃ³n mÃ³vil.', 'Plataforma mÃ³vil', '2024-08-05 16:20:00');
 
-INSERT INTO InversionFondos (IdInversion, PlazoInversión, PrioridadImportancia, EstadoInversion, ObjetivosInversion)
+INSERT INTO InversionFondos (IdInversion, PlazoInversiÃ³n, PrioridadImportancia, EstadoInversion, ObjetivosInversion)
 VALUES
     (1, '6 meses', 'Alta', 'En progreso', 'Aumentar la capacidad del sistema'),
-    (2, '1 año', 'Media', 'Planificado', 'Mejorar la seguridad de datos'),
+    (2, '1 aÃ±o', 'Media', 'Planificado', 'Mejorar la seguridad de datos'),
     (3, '3 meses', 'Baja', 'Completado', 'Actualizar hardware obsoleto');
 
 INSERT INTO NotificacionEmergencia (IdEmergencia, Descripcion, AccionesRecomendadas, EstadoEmergencia, TipoEmergencia, Lugar, FechaYHora)
 VALUES
-    (1, 'Corte de energía en el edificio', 'Usar generadores de respaldo', 'Activo', 'Corte de energía', 'Edificio A', '2024-08-06 08:45:00'),
+    (1, 'Corte de energÃ­a en el edificio', 'Usar generadores de respaldo', 'Activo', 'Corte de energÃ­a', 'Edificio A', '2024-08-06 08:45:00'),
     (2, 'Incendio en el piso 3', 'Evacuar inmediatamente', 'Resuelto', 'Incendio', 'Piso 3', '2024-08-07 14:30:00'),
     (3, 'Fuga de gas en la cocina', 'Cerrar la llave de gas principal', 'Activo', 'Fuga de gas', 'Cocina', '2024-08-08 10:15:00');
 
 INSERT INTO AnuncioAcontecimientos (IdAcontecimiento, TipoAcontecimiento, Descripcion, EstadoAcontecimiento, LugarAcontecimiento, FechayHora)
 VALUES
-    (1, 'Fiesta', 'Fiesta de bienvenida para nuevos residentes', 'Programado', 'Salón de eventos', '2024-08-09 19:00:00'),
-    (2, 'Reunión', 'Reunión anual de propietarios', 'Programado', 'Sala de conferencias', '2024-08-10 17:00:00'),
+    (1, 'Fiesta', 'Fiesta de bienvenida para nuevos residentes', 'Programado', 'SalÃ³n de eventos', '2024-08-09 19:00:00'),
+    (2, 'ReuniÃ³n', 'ReuniÃ³n anual de propietarios', 'Programado', 'Sala de conferencias', '2024-08-10 17:00:00'),
     (3, 'Mantenimiento', 'Mantenimiento del ascensor', 'Completado', 'Edificio B', '2024-08-11 09:00:00');
 
 INSERT INTO SoporteTecnico (IdSoporte, IdResidente, IdAministrador, ActividadAfectada, Descripcion, Prioridad)
 VALUES
-    (1, 1, 1, 'Aplicación móvil', 'La aplicación móvil se cierra inesperadamente al intentar iniciar sesión.', 'Alta'),   
+    (1, 1, 1, 'AplicaciÃ³n mÃ³vil', 'La aplicaciÃ³n mÃ³vil se cierra inesperadamente al intentar iniciar sesiÃ³n.', 'Alta'),   
     (2, 2, 2, 'Plataforma web', 'Error en la base de datos al guardar cambios en el perfil de usuario.', 'Alta'),   
-    (3, 3, 1, 'Servicio en línea', 'Interrupción de servicio intermitente que afecta la conexión con la plataforma en línea.', 'Alta'),
-    (4, 1, 2, 'Sistema de autenticación', 'Error al autenticar al usuario debido a un fallo en el sistema de autenticación.', 'Media');
+    (3, 3, 1, 'Servicio en lÃ­nea', 'InterrupciÃ³n de servicio intermitente que afecta la conexiÃ³n con la plataforma en lÃ­nea.', 'Alta'),
+    (4, 1, 2, 'Sistema de autenticaciÃ³n', 'Error al autenticar al usuario debido a un fallo en el sistema de autenticaciÃ³n.',Â 'Media');
