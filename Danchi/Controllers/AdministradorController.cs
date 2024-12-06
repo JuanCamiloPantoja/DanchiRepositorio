@@ -1,5 +1,6 @@
 ﻿using Danchi.Models;
 using Danchi.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,7 @@ namespace Danchi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AdministradorController : ControllerBase
     {
         private readonly IAdministradorRepository _repository;
