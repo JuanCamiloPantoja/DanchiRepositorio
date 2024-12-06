@@ -22,10 +22,6 @@ namespace Danchi
             services.AddScoped<ISoporteTecnicoRepository, SoporteTecnicoRepository>();
             services.AddScoped<ISugerenciasReporteErroresRepository, SugerenciasReporteErroresRepository>();
 
-
-
-
-
             return services;
         }
     }
