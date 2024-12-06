@@ -8,7 +8,6 @@ namespace Danchi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class AutenticacionUsuarioController : ControllerBase
     {
         private readonly IAutenticacionUsuarioRepository _repository;

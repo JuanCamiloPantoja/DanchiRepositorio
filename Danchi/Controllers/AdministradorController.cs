@@ -9,7 +9,7 @@ namespace Danchi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class AdministradorController : ControllerBase
     {
         private readonly IAdministradorRepository _repository;
