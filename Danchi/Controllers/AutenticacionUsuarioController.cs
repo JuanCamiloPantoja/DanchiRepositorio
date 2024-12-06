@@ -1,5 +1,6 @@
 ﻿using Danchi.Models;
 using Danchi.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,7 @@ namespace Danchi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AutenticacionUsuarioController : ControllerBase
     {
         private readonly IAutenticacionUsuarioRepository _repository;
