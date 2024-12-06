@@ -94,12 +94,6 @@ VALUES
     (2, 2, 'Error', 'Hay un problema al cargar la página.', 'Plataforma web', '2024-08-04 09:15:00'),
     (3, 3, 'Sugerencia', 'Sería útil tener una aplicación móvil.', 'Plataforma móvil', '2024-08-05 16:20:00');
 
-INSERT INTO InversionFondos (IdInversion, PlazoInversión, PrioridadImportancia, EstadoInversion, ObjetivosInversion)
-VALUES
-    (1, '6 meses', 'Alta', 'En progreso', 'Aumentar la capacidad del sistema'),
-    (2, '1 año', 'Media', 'Planificado', 'Mejorar la seguridad de datos'),
-    (3, '3 meses', 'Baja', 'Completado', 'Actualizar hardware obsoleto');
-
 INSERT INTO NotificacionEmergencia (IdEmergencia, Descripcion, AccionesRecomendadas, EstadoEmergencia, TipoEmergencia, Lugar, FechaYHora)
 VALUES
     (1, 'Corte de energía en el edificio', 'Usar generadores de respaldo', 'Activo', 'Corte de energía', 'Edificio A', '2024-08-06 08:45:00'),
