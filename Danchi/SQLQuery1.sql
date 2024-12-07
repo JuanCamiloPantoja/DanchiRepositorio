@@ -11,7 +11,7 @@ create table Administrador(
 IdAdministrador int primary key,
 Nombre nvarchar (100),
 CelularAdministrador numeric(10,0),
-CorreoElctronicoAd nvarchar(100)
+CorreoElectronicoAd nvarchar(100)
 );
 Create table AutenticacionUsuario(
 TipoUsuario nvarchar(50),
