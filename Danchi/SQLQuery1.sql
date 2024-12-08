@@ -14,6 +14,7 @@ CelularAdministrador numeric(10,0),
 CorreoElectronicoAd nvarchar(100)
 );
 Create table AutenticacionUsuario(
+IdAutenticacion int primary key,    
 TipoUsuario nvarchar(50),
 Usuario nvarchar(50),
 Contraseña nvarchar(50));
