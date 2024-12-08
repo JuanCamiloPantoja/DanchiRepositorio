@@ -33,7 +33,7 @@ Adjuntos varchar(MAX));
 Create table SugerenciasReporteErrores(
 IdSugerenciaError int primary key,
 IdResidente int constraint FK_SugerenciaError_Residente foreign key references Residente(IdResidente),
-Tipo_De_Reporte nvarchar (50),
+TipoDeReporte nvarchar (50),
 Descripcion nvarchar(200),
 Lugar nvarchar(100),
 FechaYHora datetime
@@ -89,7 +89,7 @@ VALUES
     (2, 2, 2, 'Hola María, ¿tienes algún problema con el servicio?', '2024-08-01', '11:00:00', 'Enviado', 'Consulta sobre servicios', 'Videos'),
     (3, 1, 3, 'Carlos, estamos revisando tu solicitud de soporte técnico.', '2024-08-02', '14:45:00', 'Enviado', 'Soporte técnico', 'Audio');
 
-INSERT INTO SugerenciasReporteErrores (IdSugerenciaError, IdResidente, Tipo_De_Reporte, Descripcion, Lugar, FechaYHora)
+INSERT INTO SugerenciasReporteErrores (IdSugerenciaError, IdResidente, TipoDeReporte, Descripcion, Lugar, FechaYHora)
 VALUES
     (1, 1, 'Sugerencia', 'Me gustaría sugerir una nueva función.', 'Plataforma web', '2024-08-03 12:30:00'),
     (2, 2, 'Error', 'Hay un problema al cargar la página.', 'Plataforma web', '2024-08-04 09:15:00'),
