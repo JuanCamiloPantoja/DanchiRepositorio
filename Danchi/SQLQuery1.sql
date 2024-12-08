@@ -14,6 +14,7 @@ CelularAdministrador numeric(10,0),
 CorreoElectronicoAd nvarchar(100)
 );
 Create table AutenticacionUsuario(
+IdAutenticacion int primary key,    
 TipoUsuario nvarchar(50),
 Usuario nvarchar(50),
 Contraseña nvarchar(50));
@@ -78,9 +79,9 @@ VALUES
 
 INSERT INTO AutenticacionUsuario (TipoUsuario, Usuario, Contraseña)
 VALUES
-    ('Residente', 'juanp', 'password123'),
-    ('Administrador', 'pedrom', 'adminpass'),
-    ('Residente', 'marial', 'mypass2024');
+    (1, 'Residente', 'juanp', 'password123'),
+    (2, 'Administrador', 'pedrom', 'adminpass'),
+    (3, 'Residente', 'marial', 'mypass2024');
 
 INSERT INTO ChatInterno (IdChat, IdAdministrador, IdResidente, Mensaje, Fecha, Hora, EstadoDelMensaje, Asunto, Adjuntos)
 VALUES
