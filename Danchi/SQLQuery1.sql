@@ -39,7 +39,7 @@ Lugar nvarchar(100),
 FechaYHora datetime
 );
 
-Create Table NotificacionEmergencia(
+Create Table NotificacionEmergencias(
 IdEmergencia int primary key,
 Descripcion nvarchar(200),
 AccionesRecomendadas nvarchar(200),
@@ -85,9 +85,9 @@ VALUES
 
 INSERT INTO ChatInterno (IdChat, IdAdministrador, IdResidente, Mensaje, Fecha, Hora, EstadoDelMensaje, Asunto, Adjuntos)
 VALUES
-    (1, 1, 1, 'Hola Juan, ¿cómo puedo ayudarte hoy?', '2024-08-01', '10:30:00', 'Enviado', 'Asistencia general', NULL),
-    (2, 2, 2, 'Hola María, ¿tienes algún problema con el servicio?', '2024-08-01', '11:00:00', 'Enviado', 'Consulta sobre servicios', NULL),
-    (3, 1, 3, 'Carlos, estamos revisando tu solicitud de soporte técnico.', '2024-08-02', '14:45:00', 'Enviado', 'Soporte técnico', NULL);
+    (1, 1, 1, 'Hola Juan, ¿cómo puedo ayudarte hoy?', '2024-08-01', '10:30:00', 'Enviado', 'Asistencia general', 'Fotos'),
+    (2, 2, 2, 'Hola María, ¿tienes algún problema con el servicio?', '2024-08-01', '11:00:00', 'Enviado', 'Consulta sobre servicios', 'Videos'),
+    (3, 1, 3, 'Carlos, estamos revisando tu solicitud de soporte técnico.', '2024-08-02', '14:45:00', 'Enviado', 'Soporte técnico', 'Audio');
 
 INSERT INTO SugerenciasReporteErrores (IdSugerenciaError, IdResidente, Tipo_De_Reporte, Descripcion, Lugar, FechaYHora)
 VALUES
@@ -95,7 +95,7 @@ VALUES
     (2, 2, 'Error', 'Hay un problema al cargar la página.', 'Plataforma web', '2024-08-04 09:15:00'),
     (3, 3, 'Sugerencia', 'Sería útil tener una aplicación móvil.', 'Plataforma móvil', '2024-08-05 16:20:00');
 
-INSERT INTO NotificacionEmergencia (IdEmergencia, Descripcion, AccionesRecomendadas, EstadoEmergencia, TipoEmergencia, Lugar, FechaYHora)
+INSERT INTO NotificacionEmergencias (IdEmergencia, Descripcion, AccionesRecomendadas, EstadoEmergencia, TipoEmergencia, Lugar, FechaYHora)
 VALUES
     (1, 'Corte de energía en el edificio', 'Usar generadores de respaldo', 'Activo', 'Corte de energía', 'Edificio A', '2024-08-06 08:45:00'),
     (2, 'Incendio en el piso 3', 'Evacuar inmediatamente', 'Resuelto', 'Incendio', 'Piso 3', '2024-08-07 14:30:00'),
