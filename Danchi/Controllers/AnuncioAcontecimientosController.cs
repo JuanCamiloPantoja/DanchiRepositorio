@@ -51,8 +51,13 @@ namespace Danchi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> PutAnuncioAcontecimientos([FromBody] AnuncioAcontecimientos anuncioAcontecimientos)
+        public async Task<IActionResult> PutAnuncioAcontecimientos(int id, [FromBody] AnuncioAcontecimientos anuncioAcontecimientos)
         {
+            if (id != anuncioAcontecimientos.IdAcontecimiento)
+            {
+                return BadRequest("El ID del acontecimiento no coincide con el proporcionado.");
+            }
+
             try
             {
                 var response = await _repository.PutAnuncioAcontecimientos(anuncioAcontecimientos);

@@ -43,8 +43,9 @@ namespace Danchi.Context
             modelBuilder.Entity<AnuncioAcontecimientos>().Property(u => u.FechaYHora).HasColumnName("FechaYHora");
 
             modelBuilder.Entity<AutenticacionUsuario>().ToTable("AutenticacionUsuario");
-            modelBuilder.Entity<AutenticacionUsuario>().HasKey(u => u.TipoUsuario);
-            modelBuilder.Entity<AutenticacionUsuario>().Property(u => u.TipoUsuario).HasColumnName("TipoUsuario").ValueGeneratedOnAdd();
+            modelBuilder.Entity<AutenticacionUsuario>().HasKey(u => u.IdAutenticacion);
+            modelBuilder.Entity<AutenticacionUsuario>().Property(u => u.IdAutenticacion).HasColumnName("IdAutenticacion").ValueGeneratedOnAdd();
+            modelBuilder.Entity<AutenticacionUsuario>().Property(u => u.TipoUsuario).HasColumnName("TipoUsuario");
             modelBuilder.Entity<AutenticacionUsuario>().Property(u => u.Usuario).HasColumnName("Usuario");
             modelBuilder.Entity<AutenticacionUsuario>().Property(u => u.Contraseña).HasColumnName("Contraseña");
 

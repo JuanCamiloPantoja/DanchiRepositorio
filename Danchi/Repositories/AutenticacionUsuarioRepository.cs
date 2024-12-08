@@ -22,7 +22,11 @@ namespace Danchi.Repositories
             var data = await context.autenticacionUsuario.ToListAsync();
             return data;
         }
-
+        public async Task<AutenticacionUsuario> GetAutenticacionUsuarioById(int id)
+        {
+            var data = await context.autenticacionUsuario.Where(x => x.IdAutenticacion == id).FirstOrDefaultAsync();
+            return data;
+        }
         public async Task<AutenticacionUsuario> GetAutenticacionUsuarioByName(string Usuario)
         {
             var data = await context.autenticacionUsuario.Where(x => x.TipoUsuario == Usuario).FirstOrDefaultAsync();

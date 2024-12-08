@@ -50,8 +50,12 @@ namespace Danchi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> PutAutenticacionUsuario([FromBody] AutenticacionUsuario autenticacionUsuario)
+        public async Task<IActionResult> PutAutenticacionUsuario(int id, [FromBody] AutenticacionUsuario autenticacionUsuario)
         {
+            if (id != autenticacionUsuario.IdAutenticacion)
+            {
+                return BadRequest("El ID de la autenticación no coincide con el proporcionado.");
+            }
             try
             {
                 var response = await _repository.PutAutenticacionUsuario(autenticacionUsuario);

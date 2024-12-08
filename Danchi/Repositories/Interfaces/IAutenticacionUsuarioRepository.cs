@@ -6,6 +6,8 @@ namespace Danchi.Repositories.Interfaces
     {
         Task<List<AutenticacionUsuario>> GetAutenticacionUsuario();
 
+        Task<AutenticacionUsuario> GetAutenticacionUsuarioById(int id);
+
         Task<AutenticacionUsuario> GetAutenticacionUsuarioByName(string Usuario);
 
         Task<bool> PostAutenticacionUsuario(AutenticacionUsuario autenticacionUsuario);
