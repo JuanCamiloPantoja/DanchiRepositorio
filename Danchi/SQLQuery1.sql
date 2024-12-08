@@ -4,13 +4,13 @@ create table Residente(
 IdResidente int primary key,
 NumApartamento nvarchar(4),
 CorreoElectronico nvarchar(100),
-CelularResidente numeric(10,0),
+CelularResidente decimal,
 Nombre nvarchar(100)
 );
 create table Administrador(
 IdAdministrador int primary key,
 Nombre nvarchar (100),
-CelularAdministrador numeric(10,0),
+CelularAdministrador decimal,
 CorreoElectronicoAd nvarchar(100)
 );
 Create table AutenticacionUsuario(
