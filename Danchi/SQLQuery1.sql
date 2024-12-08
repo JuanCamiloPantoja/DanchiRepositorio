@@ -60,7 +60,7 @@ FechayHora Datetime);
 Create Table SoporteTecnico(
 IdSoporte int primary key,
 IdResidente int constraint FK_AyudaSoporte_Residente foreign key references Residente(IdResidente),
-IdAministrador int constraint FK_AyudaSoporte_Administrador foreign key references Administrador(IdAdministrador),
+IdAdministrador int constraint FK_AyudaSoporte_Administrador foreign key references Administrador(IdAdministrador),
 ActividadAfectada nvarchar(100),
 Descripcion nvarchar(100),
 Prioridad nvarchar(50)
@@ -107,7 +107,7 @@ VALUES
     (2, 'Reunión', 'Reunión anual de propietarios', 'Programado', 'Sala de conferencias', '2024-08-10 17:00:00'),
     (3, 'Mantenimiento', 'Mantenimiento del ascensor', 'Completado', 'Edificio B', '2024-08-11 09:00:00');
 
-INSERT INTO SoporteTecnico (IdSoporte, IdResidente, IdAministrador, ActividadAfectada, Descripcion, Prioridad)
+INSERT INTO SoporteTecnico (IdSoporte, IdResidente, IdAdministrador, ActividadAfectada, Descripcion, Prioridad)
 VALUES
     (1, 1, 1, 'Aplicación móvil', 'La aplicación móvil se cierra inesperadamente al intentar iniciar sesión.', 'Alta'),   
     (2, 2, 2, 'Plataforma web', 'Error en la base de datos al guardar cambios en el perfil de usuario.', 'Alta'),   
