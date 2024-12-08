@@ -7,8 +7,6 @@ namespace Danchi.Repositories.Interfaces
 
         Task<ChatInterno> GetChatInternoById(int id);
 
-        Task<ChatInterno> GetChatInternoByName(int IdResidente);
-
         Task<ChatInterno> GetChatInternoByName(string Mensaje);
 
         Task<bool> PostChatInterno(ChatInterno chatInterno);

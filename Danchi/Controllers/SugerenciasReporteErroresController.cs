@@ -49,8 +49,12 @@ namespace Danchi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> PutSugerenciasReporteErrores([FromBody] SugerenciasReporteErrores sugerenciasReporteErrores)
+        public async Task<IActionResult> PutSugerenciasReporteErrores(int id, [FromBody] SugerenciasReporteErrores sugerenciasReporteErrores)
         {
+            if (id != sugerenciasReporteErrores.IdSugerenciaError)
+            {
+                return BadRequest("El ID de la sugerencia y error no coincide con el proporcionado.");
+            }
             try
             {
                 var response = await _repository.PutSugerenciasReporteErrores(sugerenciasReporteErrores);

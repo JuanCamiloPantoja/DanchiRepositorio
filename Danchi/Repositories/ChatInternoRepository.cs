@@ -29,11 +29,6 @@ namespace Danchi.Repositories
             return data;
         }
 
-        public async Task<ChatInterno> GetChatInternoByName(int IdResidente)
-        {
-            var data = await context.chatInterno.Where(x => x.IdResidente == IdResidente).FirstOrDefaultAsync();
-            return data;
-        }
         public async Task<ChatInterno> GetChatInternoByName(string Mensaje)
         {
             var data = await context.chatInterno.Where(x => x.Mensaje == Mensaje).FirstOrDefaultAsync();

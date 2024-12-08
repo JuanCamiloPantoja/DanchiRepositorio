@@ -49,8 +49,12 @@ namespace Danchi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> PutSoporteTecnico([FromBody] SoporteTecnico soporteTecnico)
+        public async Task<IActionResult> PutSoporteTecnico(int id, [FromBody] SoporteTecnico soporteTecnico)
         {
+            if (id != soporteTecnico.IdSoporte)
+            {
+                return BadRequest("El ID del soporte no coincide con el proporcionado.");
+            }
             try
             {
                 var response = await _repository.PutSoporteTecnico(soporteTecnico);

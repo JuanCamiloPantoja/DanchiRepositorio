@@ -49,8 +49,12 @@ namespace Danchi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> PutResidente([FromBody] Residente residente)
+        public async Task<IActionResult> PutResidente(int id, [FromBody] Residente residente)
         {
+            if (id != residente.IdResidente)
+            {
+                return BadRequest("El ID del residente no coincide con el proporcionado.");
+            }
             try
             {
                 var response = await _repository.PutResidente(residente);

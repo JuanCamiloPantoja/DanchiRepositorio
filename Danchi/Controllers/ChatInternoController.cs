@@ -49,8 +49,12 @@ namespace Danchi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> PutChatInterno([FromBody] ChatInterno chatInterno)
+        public async Task<IActionResult> PutChatInterno(int id, [FromBody] ChatInterno chatInterno)
         {
+            if (id != chatInterno.IdChat)
+            {
+                return BadRequest("El ID del chat no coincide con el proporcionado.");
+            }
             try
             {
                 var response = await _repository.PutChatInterno(chatInterno);

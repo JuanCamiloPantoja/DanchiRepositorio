@@ -49,8 +49,12 @@ namespace Danchi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> PutNotificacionEmergencias([FromBody] NotificacionEmergencias notificacionEmergencias)
+        public async Task<IActionResult> PutNotificacionEmergencias(int id, [FromBody] NotificacionEmergencias notificacionEmergencias)
         {
+            if (id != notificacionEmergencias.IdEmergencia)
+            {
+                return BadRequest("El ID de la emergencia no coincide con el proporcionado.");
+            }
             try
             {
                 var response = await _repository.PutNotificacionEmergencias(notificacionEmergencias);
