@@ -1,3 +1,4 @@
+Drop database DanchiBaseDeDatos
 Create Database DanchiBaseDeDatos;
 use DanchiBaseDeDatos;
 create table Residente(
@@ -16,6 +17,10 @@ CorreoElectronicoAd nvarchar(100)
 Create table AutenticacionUsuario(
 IdAutenticacion int primary key,    
 TipoUsuario nvarchar(50),
+Usuario nvarchar(50),
+Contraseña nvarchar(50));
+
+Create table Login(
 Usuario nvarchar(50),
 Contraseña nvarchar(50));
 
@@ -66,18 +71,13 @@ Descripcion nvarchar(100),
 Prioridad nvarchar(50)
 );
 
-INSERT INTO Residente (IdResidente, NumApartamento, CorreoElectronico, CelularResidente, Nombre)
-VALUES
-    (1, '101B', 'juan.perez@example.com', 3001234567, 'Juan Perez'),
-    (2, '102C', 'maria.lopez@example.com', 3007654321, 'Maria Lopez'),
-    (3, '103D', 'carlos.gomez@example.com', 3209876543, 'Carlos Gomez');
 
-INSERT INTO Administrador (IdAdministrador, Nombre, CelularAdministrador, CorreoElctronicoAd)
+INSERT INTO Administrador (IdAdministrador, Nombre, CelularAdministrador, CorreoElectronicoAd)
 VALUES
     (1, 'Pedro Martinez', 3102345678, 'pedro.martinez@admin.com'),
     (2, 'Ana Rodriguez', 3118765432, 'ana.rodriguez@admin.com');
 
-INSERT INTO AutenticacionUsuario (TipoUsuario, Usuario, Contraseña)
+INSERT INTO AutenticacionUsuario (IdAutenticacion , TipoUsuario, Usuario, Contraseña)
 VALUES
     (1, 'Residente', 'juanp', 'password123'),
     (2, 'Administrador', 'pedrom', 'adminpass'),
