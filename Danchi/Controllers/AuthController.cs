@@ -1,4 +1,5 @@
-﻿using Danchi.Models;
+﻿using Danchi.Context;
+using Danchi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -12,49 +13,55 @@ namespace Danchi.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IConfiguration _configuration;
+        private readonly Danchi_Context _context;
 
-        public AuthController(IConfiguration configuration)
+        public AuthController(IConfiguration configuration, Danchi_Context context)
         {
             _configuration = configuration;
+            _context = context;
         }
 
         [HttpPost("Login")]
-        public IActionResult Login([FromBody] AutenticacionUsuario autenticacionUsuario)
+        public IActionResult Login([FromBody] Login login)
         {
-            if (autenticacionUsuario == null || string.IsNullOrEmpty(autenticacionUsuario.Usuario) || string.IsNullOrEmpty(autenticacionUsuario.Contraseña))
+            if (login == null || string.IsNullOrEmpty(login.Email) || string.IsNullOrEmpty(login.Password))
             {
                 return BadRequest("Invalid client request");
             }
 
-            // Obtener las credenciales desde la configuración
-            var configuredUsername = _configuration["Auth:Username"];
-            var configuredPassword = _configuration["Auth:Password"];
+            // Verificar si el usuario existe en la base de datos
+            var AutenticacionUsuario = _context.autenticacionUsuario
+                .FirstOrDefault(u => u.Usuario == login.Email);
 
-            // Verificar las credenciales
-            if (autenticacionUsuario.Usuario == configuredUsername && autenticacionUsuario.Contraseña == configuredPassword)
+            if (AutenticacionUsuario == null || AutenticacionUsuario.Contraseña != login.Password)
             {
-                var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-                var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
-
-                var tokeOptions = new JwtSecurityToken(
-                    issuer: _configuration["Jwt:Issuer"],
-                    audience: _configuration["Jwt:Audience"],
-                    claims: new List<Claim>
-                    {
-                    new Claim(ClaimTypes.Name, autenticacionUsuario.Usuario), // Usamos el email como nombre de usuario
-                    new Claim(ClaimTypes.Role, "Admin") // Puedes ajustar el rol según sea necesario
-                    },
-                    expires: DateTime.Now.AddMinutes(30),
-                    signingCredentials: signinCredentials
-                );
-
-                var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
-                return Ok(new { Token = tokenString });
+                return Unauthorized("Invalid email or password");
             }
-            else
-            {
-                return Unauthorized();
-            }
+
+            // Generación del token JWT
+            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+
+            var tokenOptions = new JwtSecurityToken(
+                issuer: _configuration["Jwt:Issuer"],
+                audience: _configuration["Jwt:Audience"],
+                claims: new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, AutenticacionUsuario.Usuario),  // Usamos el correo como nombre de usuario
+                    new Claim(ClaimTypes.Role, AutenticacionUsuario.TipoUsuario) // El tipo de usuario como rol
+                },
+                expires: DateTime.Now.AddMinutes(30),
+                signingCredentials: signinCredentials
+            );
+
+            var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
+            return Ok(new { Token = tokenString });
         }
+    }
+
+    public class Login
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
     }
 }
