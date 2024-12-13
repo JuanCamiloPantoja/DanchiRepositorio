@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Danchi", "Danchi\Danchi.csproj", "{FF5E9000-5134-4707-9E72-07037F3C8D50}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Danchi", "Danchi.csproj", "{FF5E9000-5134-4707-9E72-07037F3C8D50}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Script", "Script", "{B642D71F-4110-4949-B2DF-C17F03FD88FC}"
 	ProjectSection(SolutionItems) = preProject
